@@ -1,7 +1,10 @@
 import { Background } from "./background";
+import { useAuthRefresh } from "./hooks/use-auto-refresh";
 import { Timer } from "./timer";
 
 export const App = () => {
+  useAuthRefresh();
+
   return (
     <>
       <Background />
