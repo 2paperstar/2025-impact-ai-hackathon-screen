@@ -2,7 +2,12 @@ import { useEffect, useState } from "react";
 
 const targetDate = new Date("2025-05-18T13:00:00");
 
-const formatTime = (time: number, base: number = 10, length: number = 2) => {
+const formatTime = (
+  time: number,
+  base: number = 10,
+  length: number = 2,
+  prefix: string = ""
+) => {
   const hours = Math.floor(time / 3600000)
     .toString(base)
     .padStart(length, "0");
@@ -12,7 +17,7 @@ const formatTime = (time: number, base: number = 10, length: number = 2) => {
   const seconds = Math.floor((time % 60000) / 1000)
     .toString(base)
     .padStart(length, "0");
-  return `${hours}:${minutes}:${seconds}`;
+  return `${prefix}${hours}:${prefix}${minutes}:${prefix}${seconds}`;
 };
 
 export const Timer = () => {
@@ -28,7 +33,13 @@ export const Timer = () => {
 
   return (
     <div className="flex flex-col items-center ">
-      <div className="tracking-tighter">{formatTime(time, 2, 8)}</div>
+      <div className="tracking-tighter">{formatTime(time, 16, 2, "0x")}</div>
+      <div className="tracking-tighter text-[80px]">
+        {formatTime(time, 2, 6, "0b")}
+      </div>
+      <div className="tracking-tighter text-[80px]">
+        {formatTime(time, 8, 2, "0o")}
+      </div>
       <div className="text-[60px] opacity-40">{formatTime(time)}</div>
     </div>
   );
