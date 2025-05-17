@@ -29,7 +29,7 @@ export const App = () => {
             <Timer />
           </div>
         </div>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 items-center">
           <div className="text-center text-[40px] font-bold flex flex-col gap-2">
             <div className="flex flex-col items-center">
               <span className="bg-white/60 px-2 py-1">
