@@ -17,12 +17,9 @@ const Title = () => {
   );
 };
 
-const date = new Date();
-date.setSeconds(date.getSeconds() - 13);
-
 export const App = () => {
   useAuthRefresh();
-  const time = useTimer(date);
+  const time = useTimer();
 
   return (
     <>
