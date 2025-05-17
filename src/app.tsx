@@ -1,5 +1,6 @@
 import { Background } from "./background";
 import { useAuthRefresh } from "./hooks/use-auto-refresh";
+import { useTimer } from "./hooks/use-timer";
 import { Timer } from "./timer";
 
 const Title = () => {
@@ -16,6 +17,7 @@ const Title = () => {
 
 export const App = () => {
   useAuthRefresh();
+  const time = useTimer();
 
   return (
     <>
@@ -29,7 +31,7 @@ export const App = () => {
             <Title />
           </div>
           <div className="font-[Kdam_Thmor_Pro] text-[100px]">
-            <Timer />
+            <Timer time={time} />
           </div>
         </div>
       </div>

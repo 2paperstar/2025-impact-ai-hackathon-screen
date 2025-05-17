@@ -1,7 +1,3 @@
-import { useEffect, useState } from "react";
-
-const targetDate = new Date("2025-05-18T13:00:00");
-
 const formatTime = (
   time: number,
   base: number = 10,
@@ -20,17 +16,7 @@ const formatTime = (
   return `${prefix}${hours}:${prefix}${minutes}:${prefix}${seconds}`;
 };
 
-export const Timer = () => {
-  const [time, setTime] = useState(targetDate.getTime() - new Date().getTime());
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(targetDate.getTime() - new Date().getTime());
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
+export const Timer = ({ time }: { time: number }) => {
   return (
     <div className="flex flex-col items-center ">
       <div className="tracking-tighter">{formatTime(time, 16, 2, "0x")}</div>
