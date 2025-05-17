@@ -17,9 +17,12 @@ const Title = () => {
   );
 };
 
+const date = new Date();
+date.setSeconds(date.getSeconds() + 13);
+
 export const App = () => {
   useAuthRefresh();
-  const time = useTimer();
+  const time = useTimer(import.meta.env.DEV ? date : undefined);
 
   return (
     <>
