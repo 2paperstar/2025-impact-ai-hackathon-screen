@@ -28,7 +28,7 @@ export const Timer = () => {
 
   return (
     <div className="flex flex-col items-center ">
-      <div>{formatTime(time, 2, 8)}</div>
+      <div className="tracking-tighter">{formatTime(time, 2, 8)}</div>
       <div className="text-[60px] opacity-40">{formatTime(time)}</div>
     </div>
   );
