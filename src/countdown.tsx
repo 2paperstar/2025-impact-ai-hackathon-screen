@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import countdown from "./assets/countdown.wav";
 
 const colorCombinations = [
   { from: "#7C3AED", to: "#3B82F6" }, // purple to blue
@@ -21,6 +22,18 @@ export const Countdown = ({ time }: { time: number }) => {
   }, [time]);
 
   const currentColors = colorCombinations[colorIndex];
+
+  useEffect(() => {
+    (async () => {
+      const context = new AudioContext();
+      const source = context.createBufferSource();
+      const buffer = await fetch(countdown).then((res) => res.arrayBuffer());
+      const audioBuffer = await context.decodeAudioData(buffer);
+      source.buffer = audioBuffer;
+      source.connect(context.destination);
+      source.start(0, time > 1000 ? 0 : 3, 0.5);
+    })();
+  }, [time]);
 
   return (
     <motion.div
