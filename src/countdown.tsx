@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import countdown from "./assets/countdown.wav";
+import { useAudioContext } from "./hooks/use-audio-context";
 
 const colorCombinations = [
   { from: "#7C3AED", to: "#3B82F6" }, // purple to blue
@@ -13,6 +14,7 @@ const colorCombinations = [
 export const Countdown = ({ time }: { time: number }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [colorIndex, setColorIndex] = useState(0);
+  const audioContext = useAudioContext();
 
   useEffect(() => {
     setIsVisible(false);
@@ -25,15 +27,15 @@ export const Countdown = ({ time }: { time: number }) => {
 
   useEffect(() => {
     (async () => {
-      const context = new AudioContext();
-      const source = context.createBufferSource();
+      if (!audioContext) return;
+      const source = audioContext.createBufferSource();
       const buffer = await fetch(countdown).then((res) => res.arrayBuffer());
-      const audioBuffer = await context.decodeAudioData(buffer);
+      const audioBuffer = await audioContext.decodeAudioData(buffer);
       source.buffer = audioBuffer;
-      source.connect(context.destination);
+      source.connect(audioContext.destination);
       source.start(0, time > 1000 ? 0 : 3, 0.5);
     })();
-  }, [time]);
+  }, [audioContext, time]);
 
   return (
     <motion.div

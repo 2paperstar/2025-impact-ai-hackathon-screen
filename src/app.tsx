@@ -1,5 +1,9 @@
 import { Background } from "./background";
 import { Countdown } from "./countdown";
+import {
+  ReactAudioContext,
+  useAudioContextProvider,
+} from "./hooks/use-audio-context";
 import { useAuthRefresh } from "./hooks/use-auto-refresh";
 import { useTimer } from "./hooks/use-timer";
 import { TimeOver } from "./time-over";
@@ -23,9 +27,10 @@ date.setSeconds(date.getSeconds() + 13);
 export const App = () => {
   useAuthRefresh();
   const time = useTimer(import.meta.env.DEV ? date : undefined);
+  const { audioContext } = useAudioContextProvider();
 
   return (
-    <>
+    <ReactAudioContext.Provider value={audioContext}>
       <Background />
       {time > 11 * 1000 ? (
         <div className="fixed inset-0 flex flex-col items-center justify-center gap-10">
@@ -46,6 +51,6 @@ export const App = () => {
       ) : (
         <TimeOver />
       )}
-    </>
+    </ReactAudioContext.Provider>
   );
 };
