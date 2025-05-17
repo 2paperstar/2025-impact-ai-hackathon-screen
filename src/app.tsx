@@ -1,4 +1,5 @@
 import { Background } from "./background";
+import { Timer } from "./timer";
 
 export const App = () => {
   return (
@@ -11,7 +12,9 @@ export const App = () => {
             🔥 Solve with Code 🔥
           </div>
         </div>
-        <div className="font-[Kdam_Thmor_Pro] text-[100px]">10:43:24</div>
+        <div className="font-[Kdam_Thmor_Pro] text-[100px]">
+          <Timer />
+        </div>
       </div>
     </>
   );
