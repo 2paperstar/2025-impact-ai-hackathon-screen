@@ -16,7 +16,7 @@ const formatTime = (time: number) => {
 };
 
 export const Timer = () => {
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState(targetDate.getTime() - new Date().getTime());
 
   useEffect(() => {
     const interval = setInterval(() => {
