@@ -1,6 +1,8 @@
 import { Background } from "./background";
+import { Countdown } from "./countdown";
 import { useAuthRefresh } from "./hooks/use-auto-refresh";
 import { useTimer } from "./hooks/use-timer";
+import { TimeOver } from "./time-over";
 import { Timer } from "./timer";
 
 const Title = () => {
@@ -15,26 +17,35 @@ const Title = () => {
   );
 };
 
+const date = new Date();
+date.setSeconds(date.getSeconds() - 13);
+
 export const App = () => {
   useAuthRefresh();
-  const time = useTimer();
+  const time = useTimer(date);
 
   return (
     <>
       <Background />
-      <div className="fixed inset-0 flex flex-col items-center justify-center gap-10">
-        <div className="flex flex-col items-center">
+      {time > 11 * 1000 ? (
+        <div className="fixed inset-0 flex flex-col items-center justify-center gap-10">
           <div className="flex flex-col items-center">
-            <div className="text-[240px] -my-12 animate-rotate-with-delay">
-              ⌛
+            <div className="flex flex-col items-center">
+              <div className="text-[240px] -my-12 animate-rotate-with-delay">
+                ⌛
+              </div>
+              <Title />
             </div>
-            <Title />
-          </div>
-          <div className="font-[Kdam_Thmor_Pro] text-[100px]">
-            <Timer time={time} />
+            <div className="font-[Kdam_Thmor_Pro] text-[100px]">
+              <Timer time={time} />
+            </div>
           </div>
         </div>
-      </div>
+      ) : time > 0 ? (
+        <Countdown time={time} />
+      ) : (
+        <TimeOver />
+      )}
     </>
   );
 };
