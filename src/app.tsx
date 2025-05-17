@@ -4,7 +4,7 @@ import {
   ReactAudioContext,
   useAudioContextProvider,
 } from "./hooks/use-audio-context";
-import { useAuthRefresh } from "./hooks/use-auto-refresh";
+import { useAutoRefresh } from "./hooks/use-auto-refresh";
 import { useTimer } from "./hooks/use-timer";
 import { TimeOver } from "./time-over";
 import { Timer } from "./timer";
@@ -25,7 +25,7 @@ const date = new Date();
 date.setSeconds(date.getSeconds() + 13);
 
 export const App = () => {
-  useAuthRefresh();
+  useAutoRefresh();
   const time = useTimer(import.meta.env.DEV ? date : undefined);
   const { audioContext } = useAudioContextProvider();
 
