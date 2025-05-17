@@ -47,6 +47,21 @@ export const App = () => {
             </span>
           </div>
         </div>
+        <div className="flex items-center gap-4 text-xl">
+          Menus:
+          <div className="flex flex-col items-center bg-red-100 p-2">
+            <div>오징어 두루치기</div>
+            <div className="text-base">Squid Stir-Fry</div>
+          </div>
+          <div className="flex flex-col items-center bg-yellow-100 p-2">
+            <div>버섯소불고기</div>
+            <div className="text-base">Mushroom Bulgogi</div>
+          </div>
+          <div className="flex flex-col items-center bg-blue-100 p-2">
+            <div>숯불닭구이</div>
+            <div className="text-base">Grilled Chicken</div>
+          </div>
+        </div>
       </div>
     </>
   );
