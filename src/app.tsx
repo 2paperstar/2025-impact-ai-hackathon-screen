@@ -7,7 +7,7 @@ const Title = () => {
     <div className="font-[Kdam_Thmor_Pro] text-[100px] flex gap-4">
       🔥{" "}
       <div className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent animate-gradient-flow">
-        Solve with Code
+        Solve with Code!!
       </div>{" "}
       🔥
     </div>
