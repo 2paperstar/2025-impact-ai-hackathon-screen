@@ -47,7 +47,7 @@ export const App = () => {
               </div>
             </div>
             <div className="flex flex-col items-center gap-8 [&_span]:bg-white/60">
-              <div className="flex flex-col items-center text-[50px] text-center [&_div]:-mt-6">
+              <div className="flex flex-col items-center text-[40px] text-center [&_div]:-mt-6">
                 <span>제출 시간은 13시까지 입니다.</span>
                 <span>제출 시간을 어기거나</span>
                 <span>
@@ -55,7 +55,7 @@ export const App = () => {
                 </span>
                 <span>이점 유의하시길 바랍니다.</span>
               </div>
-              <div className="flex flex-col items-center text-[40px] text-center [&_div]:-mt-6">
+              <div className="flex flex-col items-center text-[30px] text-center [&_div]:-mt-6">
                 <span>The submission deadline is 1 PM.</span>
                 <span>If you miss the deadline</span>
                 <span>
