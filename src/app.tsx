@@ -22,7 +22,7 @@ const Title = () => {
 };
 
 const date = new Date();
-date.setSeconds(date.getSeconds() + 13);
+date.setSeconds(date.getSeconds() + 20);
 
 export const App = () => {
   useAutoRefresh();
@@ -34,15 +34,36 @@ export const App = () => {
       <Background />
       {time > 11 * 1000 ? (
         <div className="fixed inset-0 flex flex-col items-center justify-center gap-10">
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center gap-4">
             <div className="flex flex-col items-center">
-              <div className="text-[240px] -my-12 animate-rotate-with-delay">
-                ⌛
+              <div className="flex flex-col items-center">
+                <div className="text-[240px] -my-12 animate-rotate-with-delay">
+                  ⌛
+                </div>
+                <Title />
               </div>
-              <Title />
+              <div className="font-[Kdam_Thmor_Pro] text-[100px]">
+                <Timer time={time} />
+              </div>
             </div>
-            <div className="font-[Kdam_Thmor_Pro] text-[100px]">
-              <Timer time={time} />
+            <div className="flex flex-col items-center gap-8 [&_span]:bg-white/60">
+              <div className="flex flex-col items-center text-[50px] text-center [&_div]:-mt-6">
+                <span>제출 시간은 13시까지 입니다.</span>
+                <span>제출 시간을 어기거나</span>
+                <span>
+                  제출 시간 이후 코드를 수정하는 경우 패널티가 부과되니
+                </span>
+                <span>이점 유의하시길 바랍니다.</span>
+              </div>
+              <div className="flex flex-col items-center text-[40px] text-center [&_div]:-mt-6">
+                <span>The submission deadline is 1 PM.</span>
+                <span>If you miss the deadline</span>
+                <span>
+                  or modify the code after the deadline, penalties will be
+                  applied,
+                </span>
+                <span>so please be aware of this.</span>
+              </div>
             </div>
           </div>
         </div>

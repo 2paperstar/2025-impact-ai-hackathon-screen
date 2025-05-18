@@ -17,16 +17,5 @@ const formatTime = (
 };
 
 export const Timer = ({ time }: { time: number }) => {
-  return (
-    <div className="flex flex-col items-center ">
-      <div className="tracking-tighter">{formatTime(time, 16, 2, "0x")}</div>
-      <div className="tracking-tighter text-[80px]">
-        {formatTime(time, 2, 6, "0b")}
-      </div>
-      <div className="tracking-tighter text-[80px]">
-        {formatTime(time, 8, 2, "0o")}
-      </div>
-      <div className="text-[60px] opacity-40">{formatTime(time)}</div>
-    </div>
-  );
+  return formatTime(time);
 };
